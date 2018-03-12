@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app2="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.teamwork.teamworktestapp.viewModel.ProjectsItemViewModel" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_margin="8dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container_project"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{viewModel.onClickProject()}"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.name}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_conversion_absoluteHeight="19dp"
+                app:layout_conversion_absoluteWidth="1dp"
+                card_view:layout_constraintEnd_toStartOf="@+id/starred"
+                card_view:layout_constraintHorizontal_bias="0.08"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/starred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@{viewModel.starred ? @drawable/ic_star_black_24dp : @drawable/ic_star_border_black_24dp}"
+                app:layout_conversion_absoluteHeight="19dp"
+                app:layout_conversion_absoluteWidth="1dp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{@string/status + viewModel.status}'
+                card_view:layout_constraintStart_toStartOf="@+id/name"
+                card_view:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <TextView
+                android:id="@+id/substatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{@string/substatus + viewModel.subStatus}'
+                app2:layout_constraintLeft_toLeftOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/status"
+                card_view:layout_constraintTop_toBottomOf="@+id/status" />
+
+            <TextView
+                android:id="@+id/createdon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                android:text='@{@string/createdon + viewModel.createdOn}'
+                app2:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/substatus"
+                card_view:layout_constraintTop_toBottomOf="@+id/substatus" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

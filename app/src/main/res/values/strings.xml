@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TeamworkTestApp</string>
+    <string name="error_connection">Connection error, try again</string>
+    <string name="try_again">Try again</string>
+    <string name="id">ID :</string>
+    <string name="status">STATUS : </string>
+    <string name="substatus">SUB-STATUS : </string>
+    <string name="createdon">CREATED-ON : </string>
+    <string name="startdate">STARTED-ON : </string>
+    <string name="endate">ENDED-ON : </string>
+
+</resources>

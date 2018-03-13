@@ -46,7 +46,7 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_projects, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_projects, container, false);
         View fragmentView = binding.getRoot();
         binding.swipeContainer.setOnRefreshListener(this);
         binding.swipeContainer.setColorSchemeResources(R.color.hn_orange);
@@ -73,6 +73,7 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onRefresh() {
+        showHideRefreshRecover();
         if (mProjectsAdapter != null) mProjectsAdapter.setItems(new ArrayList<>());
         getProjects();
     }
@@ -119,7 +120,8 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void handleError(Throwable throwable) {
-        hideLoadingViews();
+        //hideLoadingViews();
+        showHideOfflineLayout(true);
     }
 
     private void hideLoadingViews() {
@@ -131,6 +133,13 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
         binding.layoutOffline.layoutOffline.setVisibility(isOffline ? View.VISIBLE : View.GONE);
         binding.recyclerProjects.setVisibility(isOffline ? View.GONE : View.VISIBLE);
         binding.progressIndicator.setVisibility(isOffline ? View.GONE : View.VISIBLE);
+        binding.swipeContainer.setRefreshing(false);
+    }
+
+    private void showHideRefreshRecover() {
+        binding.swipeContainer.setRefreshing(true);
+        binding.layoutOffline.layoutOffline.setVisibility(View.GONE);
+        binding.recyclerProjects.setVisibility(View.VISIBLE);
     }
 
 }

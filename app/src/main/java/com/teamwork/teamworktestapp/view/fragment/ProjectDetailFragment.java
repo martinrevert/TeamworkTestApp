@@ -60,6 +60,12 @@ public class ProjectDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_project_detail, container, false);
         View view = binding.getRoot();
+        binding.layoutOffline.buttonTryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadProjectIfNetworkConnected(id);
+            }
+        });
 
         setupToolbar();
         if (mProject == null) {
@@ -92,7 +98,8 @@ public class ProjectDetailFragment extends Fragment {
     }
 
     private void handleError(Throwable throwable) {
-        hideLoadingViews();
+
+        showHideOfflineLayout(true);
     }
 
     @Override
@@ -122,11 +129,14 @@ public class ProjectDetailFragment extends Fragment {
 
     private void hideLoadingViews() {
         binding.progressIndicator.setVisibility(View.GONE);
+        binding.constraintViewDetails.setVisibility(View.VISIBLE);
+        binding.layoutOffline.layoutOffline.setVisibility(View.GONE);
     }
 
     private void showHideOfflineLayout(boolean isOffline) {
         binding.layoutOffline.layoutOffline.setVisibility(isOffline ? View.VISIBLE : View.GONE);
         binding.progressIndicator.setVisibility(isOffline ? View.GONE : View.VISIBLE);
+       // binding.constraintViewDetails.setVisibility(isOffline ? View.GONE : View.VISIBLE);
     }
 
 }

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TeamworkTestApp</string>
-    <string name="error_connection">Connection error, try again</string>
+    <string name="error_connection">We have some problem to bring your data, please check your Internet connection and try again</string>
     <string name="try_again">Try again</string>
     <string name="id">ID :</string>
     <string name="status">STATUS : </string>
@@ -8,5 +8,7 @@
     <string name="createdon">CREATED-ON : </string>
     <string name="startdate">STARTED-ON : </string>
     <string name="endate">ENDED-ON : </string>
+    <string name="logo">Logo</string>
+    <string name="starred">STARRED</string>
 
 </resources>

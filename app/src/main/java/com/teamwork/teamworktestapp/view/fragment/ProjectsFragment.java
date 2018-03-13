@@ -120,7 +120,6 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void handleError(Throwable throwable) {
-        //hideLoadingViews();
         showHideOfflineLayout(true);
     }
 

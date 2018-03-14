@@ -1,7 +1,7 @@
 package com.teamwork.teamworktestapp.di.modules;
 
 import com.teamwork.teamworktestapp.data.remote.ApiService;
-import com.teamwork.teamworktestapp.data.remote.RetrofitHelpèr;
+import com.teamwork.teamworktestapp.data.remote.RetrofitHelper;
 import com.teamwork.teamworktestapp.di.scopes.PerDataManager;
 
 import dagger.Module;
@@ -22,7 +22,7 @@ public class DataManagerModule {
     @Provides
     @PerDataManager
     ApiService provideApiService() {
-        return new RetrofitHelpèr().newApiService();
+        return new RetrofitHelper().newApiService();
     }
 
     @Provides

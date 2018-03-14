@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * This must be an injectable @Module, but for easy and quick setup is just a helper here
  */
 
-public class RetrofitHelpèr {
+public class RetrofitHelper {
 
     private static final String ENDPOINT = "https://yat.teamwork.com/";
 

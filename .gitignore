@@ -16,3 +16,5 @@
 app/libs/
 app/src/test/
 *.log
+.idea/caches/
+.idea/codeStyles/

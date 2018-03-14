@@ -8,6 +8,7 @@ import android.app.Application;
 import android.content.Context;
 
 
+import com.squareup.leakcanary.LeakCanary;
 import com.teamwork.teamworktestapp.di.components.ApplicationComponent;
 import com.teamwork.teamworktestapp.di.modules.ApplicationModule;
 import com.teamwork.teamworktestapp.di.components.DaggerApplicationComponent;
@@ -21,6 +22,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
+        // Normal app init code...
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();

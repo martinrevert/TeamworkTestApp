@@ -28,10 +28,7 @@ public class DataManager {
         injectDependencies(context);
     }
 
-    /* This constructor is provided so we can set up a DataManager with mocks from unit test.
-     * At the moment this is not possible to do with Dagger because the Gradle APT plugin doesn't
-     * work for the unit test variant, plus Dagger 2 doesn't provide a nice way of overriding
-     * modules */
+    //Constructor solely for test purposes, not used on the app
     public DataManager(ApiService apiService, Scheduler subscribeScheduler ) {
         mApiService = apiService;
         mSubscribeScheduler = subscribeScheduler;

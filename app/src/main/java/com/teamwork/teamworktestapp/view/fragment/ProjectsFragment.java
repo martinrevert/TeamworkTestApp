@@ -49,7 +49,7 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_projects, container, false);
         View fragmentView = binding.getRoot();
         binding.swipeContainer.setOnRefreshListener(this);
-        binding.swipeContainer.setColorSchemeResources(R.color.hn_orange);
+        binding.swipeContainer.setColorSchemeResources(R.color.colorPrimaryDark);
         binding.layoutOffline.buttonTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

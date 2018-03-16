@@ -66,6 +66,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@color/cardview_light_background"
                 android:visibility="gone"
+                android:paddingBottom="?actionBarSize"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

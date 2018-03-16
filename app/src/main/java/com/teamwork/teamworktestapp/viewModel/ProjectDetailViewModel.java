@@ -9,6 +9,10 @@ import com.squareup.picasso.Picasso;
 import com.teamwork.teamworktestapp.R;
 import com.teamwork.teamworktestapp.models.projectdetails.Project;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by martin on 11/03/18.
  */
@@ -50,19 +54,30 @@ public class ProjectDetailViewModel extends BaseObservable {
                 .into(view);
     }
 
-    //it needs format conversion
     public String getCreatedOn() {
-        return mProject.getCreatedOn();
+        ZonedDateTime datetime = mProject.getCreatedOn();
+        LocalDateTime datelocal = datetime.toLocalDateTime();
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm").format(datelocal);
     }
 
     //it needs format conversion
     public String getStartDate() {
-        return mProject.getStartDate();
+        String date = mProject.getStartDate();
+        if (date.isEmpty()) {
+            date = mContext.getString(R.string.startdateundefined);
+        }
+        return date;
+
     }
 
     //it needs format conversion
     public String getEndDate() {
-        return mProject.getEndDate();
+        String date = mProject.getEndDate();
+        if (date.isEmpty()) {
+            date = mContext.getString(R.string.enddateundefined);
+        }
+        return date;
+
     }
 
 }

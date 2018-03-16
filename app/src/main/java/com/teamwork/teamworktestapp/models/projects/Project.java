@@ -1,5 +1,6 @@
 package com.teamwork.teamworktestapp.models.projects;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,7 +19,7 @@ public class Project {
     @SerializedName("company")
     private com.teamwork.teamworktestapp.models.projects.Company Company;
     @SerializedName("created-on")
-    private String CreatedOn;
+    private ZonedDateTime CreatedOn;
     @SerializedName("defaultPrivacy")
     private String DefaultPrivacy;
     @SerializedName("defaults")
@@ -38,7 +39,7 @@ public class Project {
     @SerializedName("isProjectAdmin")
     private Boolean IsProjectAdmin;
     @SerializedName("last-changed-on")
-    private String LastChangedOn;
+    private ZonedDateTime LastChangedOn;
     @SerializedName("logo")
     private String Logo;
     @SerializedName("name")
@@ -108,11 +109,11 @@ public class Project {
         Company = company;
     }
 
-    public String getCreatedOn() {
+    public ZonedDateTime getCreatedOn() {
         return CreatedOn;
     }
 
-    public void setCreatedOn(String createdOn) {
+    public void setCreatedOn(ZonedDateTime createdOn) {
         CreatedOn = createdOn;
     }
 
@@ -188,11 +189,11 @@ public class Project {
         IsProjectAdmin = isProjectAdmin;
     }
 
-    public String getLastChangedOn() {
+    public ZonedDateTime getLastChangedOn() {
         return LastChangedOn;
     }
 
-    public void setLastChangedOn(String lastChangedOn) {
+    public void setLastChangedOn(ZonedDateTime lastChangedOn) {
         LastChangedOn = lastChangedOn;
     }
 

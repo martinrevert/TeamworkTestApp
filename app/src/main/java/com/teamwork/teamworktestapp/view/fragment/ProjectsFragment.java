@@ -74,8 +74,12 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onRefresh() {
         showHideRefreshRecover();
-        if (mProjectsAdapter != null) mProjectsAdapter.setItems(new ArrayList<>());
-        getProjects();
+        //if (mProjectsAdapter != null) mProjectsAdapter.setItems(new ArrayList<>());
+        if(DataUtil.isNetworkAvailable(getActivity())){
+            getProjects();
+        }else{
+            showHideOfflineLayout(true);
+        }
     }
 
     private void setupToolbar() {
@@ -115,6 +119,7 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void okResult(Projects projects) {
         hideLoadingViews();
+        showHideOfflineLayout(false);
         List<Project> items = projects.getProjects();
         mProjectsAdapter.setItems(items);
     }
@@ -131,12 +136,13 @@ public class ProjectsFragment extends Fragment implements SwipeRefreshLayout.OnR
     private void showHideOfflineLayout(boolean isOffline) {
         binding.layoutOffline.layoutOffline.setVisibility(isOffline ? View.VISIBLE : View.GONE);
         binding.recyclerProjects.setVisibility(isOffline ? View.GONE : View.VISIBLE);
-        binding.progressIndicator.setVisibility(isOffline ? View.GONE : View.VISIBLE);
+        //binding.progressIndicator.setVisibility(isOffline ? View.GONE : View.VISIBLE);
         binding.swipeContainer.setRefreshing(false);
     }
 
     private void showHideRefreshRecover() {
         binding.swipeContainer.setRefreshing(true);
+        binding.progressIndicator.setVisibility(View.GONE);
         binding.layoutOffline.layoutOffline.setVisibility(View.GONE);
         binding.recyclerProjects.setVisibility(View.VISIBLE);
     }

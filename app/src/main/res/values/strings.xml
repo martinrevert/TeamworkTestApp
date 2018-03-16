@@ -10,5 +10,7 @@
     <string name="endate">ENDED-ON : </string>
     <string name="logo">Logo</string>
     <string name="starred">STARRED</string>
+    <string name="startdateundefined">This project has no start date</string>
+    <string name="enddateundefined">This project has no end date</string>
 
 </resources>

@@ -2,7 +2,6 @@ package com.teamwork.teamworktestapp.viewModel;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +10,10 @@ import android.view.View;
 import com.teamwork.teamworktestapp.R;
 import com.teamwork.teamworktestapp.models.projects.Project;
 import com.teamwork.teamworktestapp.view.fragment.ProjectDetailFragment;
+
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -51,9 +54,11 @@ public class ProjectsItemViewModel extends BaseObservable {
     public String getSubStatus() {
         return mProject.getSubStatus();
     }
-    //it needs format conversion
+
     public String getCreatedOn() {
-        return mProject.getCreatedOn();
+        ZonedDateTime datetime = mProject.getCreatedOn();
+        LocalDateTime datelocal = datetime.toLocalDateTime();
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm").format(datelocal);
     }
 
     private void launchProjectDetail(Project project) {
